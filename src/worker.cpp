@@ -30,6 +30,7 @@ void FileXorWorker::process()
     QDir outputDir(m_jobConfig.outputPath);
     QStringList files = inputDir.entryList({m_jobConfig.fileMasks}, QDir::Files);
 
+    int current = 0;
     for (const QString& filename : files)
     {
         QString fullPath = inputDir.filePath(filename);
@@ -46,7 +47,8 @@ void FileXorWorker::process()
         }
 
         if (m_jobConfig.removeInputFiles) QFile::remove(fullPath);
-
+        emit fileCompleted(filename);
+        emit progressUpdated(++current, files.size());
         //todo: emit fileFinished for progressbar
     }
     emit finished();

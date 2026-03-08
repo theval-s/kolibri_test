@@ -24,6 +24,8 @@ public slots:
     signals:
     void finished();
     void error(const QString &message);
+    void fileCompleted(const QString &filename);
+    void progressUpdated(int current, int total);
 
 private:
     bool processFile(const QString& inputFilePath, const QString& outputFilePath);

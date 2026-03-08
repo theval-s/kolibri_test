@@ -121,8 +121,15 @@ void MainWindow::startJob()
     connect(m_workerThread, &QThread::started, worker, &FileXorWorker::process);
     connect(m_workerThread, &QThread::finished, m_workerThread, &QObject::deleteLater);
 
-    //todo: add progress bar
-    //todo: use statusbar for progress
+    connect(worker, &FileXorWorker::fileCompleted, this, [this](const QString& filename)
+    {
+       ui->statusbar->showMessage("Processed "+ filename);
+    });
+    connect(worker, &FileXorWorker::progressUpdated, this, [this](int current, int total)
+    {
+        ui->progressBar->setValue(current*100/total);
+    });
+
     ui->statusbar->setEnabled(true);
     ui->runButton->setEnabled(false);
     if (ui->repeatTimerCheckbox->isChecked() && ui->repeatTimerCheckbox->isEnabled())
