@@ -60,8 +60,8 @@ void MainWindow::on_cancelButton_clicked()
         m_repeatTimer->deleteLater();
         m_repeatTimer = nullptr;
 
-        ui->repeatTimerCheckbox->setEnabled(false);
-        ui->repeatTimerSpinBox->setEnabled(false);
+        ui->repeatTimerCheckbox->setEnabled(true);
+        ui->repeatTimerSpinBox->setEnabled(true);
         ui->cancelButton->setEnabled(false);
         ui->runButton->setEnabled(true);
     }
