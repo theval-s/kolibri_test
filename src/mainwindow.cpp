@@ -74,7 +74,7 @@ void MainWindow::on_inputPathBrowseButton_clicked()
         QString dir = QFileDialog::getExistingDirectory(
             this, "Choose input directory", QApplication::applicationDirPath());
         if (!dir.isEmpty()) {
-            ui->inputPathBrowseButton->setText(dir);
+            ui->inputPathLineEdit->setText(dir);
         }
     } catch (const std::exception &e) {
         onError(e.what());
@@ -85,9 +85,9 @@ void MainWindow::on_outputPathBrowseButton_clicked()
 {
     try {
         QString dir = QFileDialog::getExistingDirectory(
-            this, "Choose input directory", QApplication::applicationDirPath());
+            this, "Choose output directory", QApplication::applicationDirPath());
         if (!dir.isEmpty()) {
-            ui->outputPathBrowseButton->setText(dir);
+            ui->outputPathLineEdit->setText(dir);
         }
     } catch (const std::exception &e) {
         onError(e.what());
