@@ -145,6 +145,7 @@ void MainWindow::startJob()
 
         ui->repeatTimerCheckbox->setEnabled(false);
         ui->repeatTimerSpinBox->setEnabled(false);
+        ui->cancelButton->setEnabled(true);
     }
     m_workerThread->start();
 }

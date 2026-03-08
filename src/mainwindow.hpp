@@ -30,6 +30,7 @@ QT_END_NAMESPACE
 // repeatTimerCheckBox + repeatTimerSpinBox
 //
 // runButton + cancelButton
+// progressBar
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
